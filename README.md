@@ -1,0 +1,2 @@
+# jscourse
+JavaScript training course
