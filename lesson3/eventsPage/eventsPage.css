@@ -1,0 +1,25 @@
+#events.page .search-wrapper {
+    padding: 5px;
+    background: gainsboro;
+}
+
+#events.page input {
+    border: none;
+    -webkit-appearance: none;
+    padding: 5px;
+    width: 100%;
+}
+
+#events.page .event {
+    font-size: 14px;
+    padding: 10px;
+    border-bottom: 1px solid gainsboro;
+}
+
+#events.page .event .name {
+    font-size: 18px;
+}
+
+#events.page .event:active {
+    background: #eee;
+}
