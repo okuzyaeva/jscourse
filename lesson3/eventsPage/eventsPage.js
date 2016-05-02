@@ -26,6 +26,13 @@ var eventsPage = {
 
     _onSearch: function (e) {
         var regex = RegExp(e.currentTarget.value, 'i');
+        /*
+         * @desc: Note how search below works.
+         *        this.eventsList[i].dataset.name returns us a string containing name event.
+         *        Strings in JavaScript has their own methods so we're using one of them.
+         *        Method .match() accepts a regular expression as a parameter and returns
+         *        all mathes it can find. Play around with it to get a sense how it works.
+         */
         for(var i = this.eventsList.length; --i >= 0;) {
             if(this.eventsList[i].dataset.name.match(regex)) {
                 this.eventsList[i].classList.remove('hidden');
