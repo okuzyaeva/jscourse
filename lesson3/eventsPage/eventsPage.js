@@ -4,6 +4,15 @@ var eventsPage = {
     eventsList: null,
 
     init: function () {
+        /*
+         * @desc: in order to generate same html structures with variable content we use templating.
+         *        Below we're using Handlebars library to create a template for event on our page.
+         *        Handlebars accepts the html of template as an input and returns a template function.
+         *        Then when we need an html for event with let's say name = "Event1", room = "room1", time ="20:30"
+         *        passing those data to template function will get us an HTML string with our variables inside.
+         *        Template itself is not used anywhere here but it will be in the future lessons.
+         *        See more details on library page: http://handlebarsjs.com
+         */
         this.template = Handlebars.compile(document.querySelector('#event-template').innerHTML);
         this.eventsDOM = document.querySelector('#events.page');
         this.eventsList = this.eventsDOM.querySelectorAll('.event');
