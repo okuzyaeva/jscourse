@@ -13,6 +13,8 @@ NOTE:
 To work with this lesson issue the `npm install` command while being in
 the `server/` directory. That will install "ws" node module.
 
+**Don't forget to change IP address in `connection.js` in order to connect to your server.**
+
 
 Homework:
 ---------

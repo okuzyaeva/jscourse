@@ -1,0 +1,361 @@
+{
+  "system": {
+    "presentationsLocation": "server/presentations"
+  },
+  "presentations": {
+    "0": {
+      "currentSlide": 2,
+      "slides": [
+        "s1.png",
+        "s2.png",
+        "s3.png"
+      ]
+    },
+    "1": {
+      "currentSlide": 1,
+      "slides": [
+        "s1.png",
+        "s2.png",
+        "s3.png"
+      ]
+    }
+  },
+  "users": {
+    "user1": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": "0",
+      "openData": {
+        "login": "user1",
+        "name": "Nikita Agafonov",
+        "company": "Gigawatz"
+      }
+    },
+    "user2": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": "0",
+      "openData": {
+        "login": "user2",
+        "name": "Elon Musk",
+        "company": "SpaceX, Tesla, SolarCity"
+      }
+    },
+    "user3": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": null,
+      "openData": {
+        "login": "user3",
+        "name": "Sean Murray",
+        "company": "Hello Games"
+      }
+    },
+    "user4": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": null,
+      "openData": {
+        "login": "user4",
+        "name": "PlayStation4 Germany",
+        "company": "Sony"
+      }
+    }
+  },
+  "chat": {
+    "0": [
+      {
+        "id": 0,
+        "time": "1460383783434",
+        "from": "user2",
+        "text": "Just wanted to write a note of appreciation for all those who have supported Tesla, SpaceX & SolarCity over the years. Thank you."
+      },
+      {
+        "id": 1,
+        "time": "1460383899751",
+        "from": "user1",
+        "text": "Glad to be useful"
+      },
+      {
+        "id": 2,
+        "time": "1460383993675",
+        "from": "user3",
+        "text": "Headphones on! Let's refactor some code!!"
+      },
+      {
+        "id": 3,
+        "time": "1460384080215",
+        "from": "user3",
+        "text": "and now we try to compile..."
+      },
+      {
+        "id": 4,
+        "time": "1460384102756",
+        "from": "user3",
+        "text": "and then it runs and crashes..."
+      },
+      {
+        "id": 5,
+        "time": "1460384154602",
+        "from": "user1",
+        "text": "lol"
+      },
+      {
+        "id": 6,
+        "time": "1460384179158",
+        "from": "user4",
+        "text": "c'mon Sean, just 2 months.. then you can relax your whole life"
+      },
+      {
+        "id": 7,
+        "time": "1460384317468",
+        "from": "user1",
+        "text": "webdave reached a 1000 views! Wooo!"
+      },
+      {
+        "id": 8,
+        "time": 1460389545546,
+        "from": "user1",
+        "text": "hello"
+      },
+      {
+        "id": 9,
+        "time": 1460389566500,
+        "from": "user1",
+        "text": "hello again"
+      },
+      {
+        "id": 10,
+        "time": 1460389607192,
+        "from": "user1",
+        "text": "testing one more time"
+      },
+      {
+        "id": 11,
+        "time": 1460389938786,
+        "from": "user1",
+        "text": "is it?"
+      },
+      {
+        "id": 12,
+        "time": 1460390259959,
+        "from": "user1",
+        "text": "checking scroll"
+      },
+      {
+        "id": 13,
+        "time": 1460390363959,
+        "from": "user1",
+        "text": "Working?"
+      },
+      {
+        "id": 14,
+        "time": 1460390372199,
+        "from": "user1",
+        "text": "working indeed!"
+      },
+      {
+        "id": 15,
+        "time": 1460475852530,
+        "from": "user2",
+        "text": "Hello"
+      },
+      {
+        "id": 16,
+        "time": 1460475920767,
+        "from": "user2",
+        "text": "Anybody avtually here?"
+      },
+      {
+        "id": 17,
+        "time": 1460475925529,
+        "from": "user1",
+        "text": "hey elon!"
+      },
+      {
+        "id": 18,
+        "time": 1460475939598,
+        "from": "user1",
+        "text": "how's it goint?"
+      },
+      {
+        "id": 19,
+        "time": 1460475988636,
+        "from": "user2",
+        "text": "oh hey nik! what eactly?"
+      },
+      {
+        "id": 20,
+        "time": 1460475997001,
+        "from": "user1",
+        "text": "ship landing"
+      },
+      {
+        "id": 21,
+        "time": 1460476021127,
+        "from": "user2",
+        "text": "you saw the video right?"
+      },
+      {
+        "id": 22,
+        "time": 1460476058527,
+        "from": "user1",
+        "text": "ofcourse I did! Jiz that was badass! But wann hear your opinion on that"
+      },
+      {
+        "id": 23,
+        "time": 1460476074282,
+        "from": "user2",
+        "text": "😄"
+      },
+      {
+        "id": 24,
+        "time": 1460476086902,
+        "from": "user1",
+        "text": "😄"
+      },
+      {
+        "id": 25,
+        "time": 1460476142881,
+        "from": "user2",
+        "text": "Right, so we've experienced some vertical velocity drops while landing"
+      },
+      {
+        "id": 26,
+        "time": 1460476169916,
+        "from": "user2",
+        "text": "windy day"
+      },
+      {
+        "id": 27,
+        "time": 1460990788322,
+        "from": "user1",
+        "text": "hello"
+      },
+      {
+        "id": 28,
+        "time": 1460990807779,
+        "from": "user1",
+        "text": "hello again"
+      },
+      {
+        "id": 29,
+        "time": 1460990836743,
+        "from": "user1",
+        "text": "hello again1"
+      },
+      {
+        "id": 30,
+        "time": 1460990849057,
+        "from": "user1",
+        "text": "hello again 2"
+      },
+      {
+        "id": 31,
+        "time": 1460990973102,
+        "from": "user2",
+        "text": "Hey there!"
+      },
+      {
+        "id": 32,
+        "time": 1460990981344,
+        "from": "user2",
+        "text": "whatsuo?"
+      },
+      {
+        "id": 33,
+        "time": 1460990986465,
+        "from": "user1",
+        "text": "whatsuuuuoooooo"
+      },
+      {
+        "id": 34,
+        "time": 1460991012319,
+        "from": "user2",
+        "text": "waaasuuuuooooo 😛"
+      },
+      {
+        "id": 35,
+        "time": 1461004215069,
+        "from": "user1",
+        "text": "asdf123"
+      },
+      {
+        "id": 36,
+        "time": 1462116252512,
+        "from": "user2",
+        "text": "Hello"
+      },
+      {
+        "id": 37,
+        "time": 1462116248606,
+        "from": "user1",
+        "text": "kjhkjh"
+      },
+      {
+        "id": 38,
+        "time": 1462116271807,
+        "from": "user1",
+        "text": "jhgjhgjh"
+      },
+      {
+        "id": 39,
+        "time": 1462116294595,
+        "from": "user2",
+        "text": "Hello"
+      },
+      {
+        "id": 39,
+        "time": 1462116554903,
+        "from": "user2",
+        "text": "Something"
+      },
+      {
+        "id": 39,
+        "time": 1462116621644,
+        "from": "user2",
+        "text": "Here?"
+      },
+      {
+        "id": 39,
+        "time": 1462116609744,
+        "from": "user1",
+        "text": "yep"
+      }
+    ],
+    "1": [
+      {
+        "id": 0,
+        "time": 1462116515425,
+        "from": "user1",
+        "text": "dfgsdfg"
+      },
+      {
+        "id": 0,
+        "time": 1462116565835,
+        "from": "user2",
+        "text": "Hello"
+      },
+      {
+        "id": 0,
+        "time": 1462116582693,
+        "from": "user2",
+        "text": "Meet me in model 3 evt"
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": 0,
+      "title": "Tesla model 3 unveil",
+      "time": "8:30pm",
+      "room": "Tesla facility, area 3"
+    },
+    {
+      "id": 1,
+      "title": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    }
+  ]
+}

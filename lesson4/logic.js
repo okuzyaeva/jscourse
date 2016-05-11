@@ -1,5 +1,5 @@
 /*
- * @desc: intro to ajax requests
+ * @desc:   intro to ajax requests
  * @params: params {object} set of parameters to join the query string
  *          e.g. pass {name: 'asdf', company: 'stark industries'}
  *          and function will automatically create a query string: "name=asdf&company=stark%20industries&"
