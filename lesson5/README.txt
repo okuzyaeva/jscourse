@@ -9,6 +9,10 @@ Topics covered:
 - How to use "ws" node module
 - How to send messages to clients based on their IP address
 
+NOTE:
+To work with this lesson issue the `npm install` command while being in
+the `server/` directory. That will install "ws" node module.
+
 
 Homework:
 ---------
