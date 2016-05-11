@@ -1,0 +1,27 @@
+body {
+    font-family: arial;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: block;
+    text-align: center;
+    background: gainsboro;
+    cursor: pointer;
+    padding: 5px;
+}

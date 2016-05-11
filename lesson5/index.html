@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="look.css">
     <script type="text/javascript" src="connection.js"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            connection.init();
-        };
-    </script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-
+    <div>Input for mobile devices</div>
+    <input type="text" placeholder="to whom" />
+    <input type="text" placeholder="what" />
+    <span id="send" class="btn">send</span>
 </body>
 </html>
