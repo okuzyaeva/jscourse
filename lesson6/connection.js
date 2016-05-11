@@ -36,6 +36,12 @@ var connection = {
             case this.serverReqs.arbitrary:
                 alert(data.itself);
             break;
+            case 'chat':
+                chatPage.onChatReceived(data.itself);
+            break;
+            case 'handledChatMessage':
+                chatPage.onIncomingMessage(data.itself);
+            break;
         }
     },
 
@@ -58,6 +64,13 @@ var connection = {
     whoIsOnline: function () {
         this._send({
             req: this.clientReqs.whoIsOnline
+        });
+    },
+
+    sendChatMessage: function (msg) {
+        this._send({
+            req: 'chatmessage',
+            message: msg
         });
     },
 

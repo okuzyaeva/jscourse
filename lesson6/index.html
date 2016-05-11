@@ -53,7 +53,12 @@
         </div>
     </div>
     <div id="presentations" class="page">page2</div>
-    <div id="chat" class="page">page3</div>
+    <div id="chat" class="page">
+        <div class="messages"></div>
+        <div class="chat-area">
+            <textarea id="chat-text" rows="1" placeholder="Type a message"></textarea><div class="send-chat-btn">Send</div>
+        </div>
+    </div>
 </div>
 </body>
 
@@ -62,6 +67,22 @@
         <div class="name">{{name}}</div>
         <div class="room">{{room}}</div>
         <div class="time">{{time}}</div>
+    </div>
+</script>
+
+<script id="chat-message-template" type="text/x-handlebars-template">
+    {{#if my}}
+    <div class="chat-message-wrapper my">
+    {{else}}
+    <div class="chat-message-wrapper">
+    {{/if}}
+        <div id="{{id}}" class="chat-message">
+            <div class="message-time">{{time}}</div>
+            {{#unless my}}
+            <div class="message-from">{{from}}</div>
+            {{/unless}}
+            <div class="message-text">{{text}}</div>
+        </div>
     </div>
 </script>
 

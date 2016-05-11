@@ -3,6 +3,8 @@ var chatPage = {
     template: null,
     chatContainer: null,
     messageContainer: null,
+    //demo only
+    from: 'user1',
 
     init: function () {
         this.dom = document.querySelector('#chat.page');
@@ -15,9 +17,9 @@ var chatPage = {
         var text = this.dom.querySelector('#chat-text').value;
         if(!text) { return; }
         connection.sendChatMessage({
-            event: user.getCurrentEventId(),
+            event: 0,//user.getCurrentEventId(),
             time: new Date().getTime(),
-            from: user.getMyOpenData().login,
+            from: this.from,//user.getMyOpenData().login,
             text: text
         });
     },
@@ -31,9 +33,9 @@ var chatPage = {
     onIncomingMessage: function (message) {
         var time = new Date(parseInt(message.time));
         var msg = {
-            my:   message.from === user.getMyOpenData().login,
+            my:   message.from === this.from,// user.getMyOpenData().login,
             time: this._constructTimeString(time),
-            from: user.getOpenDataForUser(message.from).name,
+            from: message.from,//user.getOpenDataForUser(message.from).name,
             text: message.text,
         };
         this.chatContainer.insertAdjacentHTML('beforeEnd', this.template(msg));
@@ -63,7 +65,7 @@ var chatPage = {
     onPageLoad: function () {
         // setHeader('Chat');
         // connection.getChat(user.getCurrentEventId());
-        // this.bindUIActions();
+        this.bindUIActions();
     },
 
     _onOpenDataUpdate: function () {
@@ -75,6 +77,6 @@ var chatPage = {
     },
 
     bindUIActions: function (){
-        this.dom.querySelector('.send-chat-btn').addEventListener(defineTouchEvent(), this._onSendClick.bind(this));
+        this.dom.querySelector('.send-chat-btn').addEventListener('click', this._onSendClick.bind(this));
     }
 };

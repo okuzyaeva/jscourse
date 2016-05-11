@@ -88,15 +88,15 @@ function getUserFromConnection (ws) {
 function handleIncomingMessage (msg) {
     var msg_obj = JSON.parse(msg);
     console.log('incoming message', msg_obj);
-    if(msg_obj.req !== 'credentials' && msg_obj.req !== 'lookup') {
-        if(!checkIfLoggedIn(this)) {
-            send(this, {
-                about: 'reroute',
-                itself: 'login'
-            });
-            return;
-        }
-    }
+    // if(msg_obj.req !== 'credentials' && msg_obj.req !== 'lookup') {
+    //     if(!checkIfLoggedIn(this)) {
+    //         send(this, {
+    //             about: 'reroute',
+    //             itself: 'login'
+    //         });
+    //         return;
+    //     }
+    // }
 
     switch(msg_obj.req) {
         case 'events':
@@ -210,7 +210,7 @@ function handleIncomingMessage (msg) {
                     eventId: msg_obj.eventId,
                     slideNumber: msg_obj.slideNumber
                 }
-            }, true, msg_obj.eventId);
+            }, false, msg_obj.eventId);
             updateDb();
         break;
         default:
@@ -259,7 +259,7 @@ function broadcastToEvent (ws, msg, dontSendMyself, eventId) {
     console.log('broadcasting to event', eventId);
     for(var i = clients.length; --i >= 0;) {
         if(dontSendMyself && clients[i].socket === ws) { continue; }
-        if(clients[i].user.eventId !== eventId) { continue; }
+        // if(clients[i].user.eventId !== eventId) { continue; }
         send(clients[i].socket, msg);
     }
 }
