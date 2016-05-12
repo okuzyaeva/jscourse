@@ -84,7 +84,7 @@ var connection = {
          * Note also that API below is different from those used on the server
          * because code below uses native brower API and the server one uses library (node module).
          */
-        this.socket = new WebSocket('ws://192.168.1.154:8083');
+        this.socket = new WebSocket('ws://192.168.254.52:8083');
         this.socket.onopen = function (e) {
             console.log('connection established');
             e.currentTarget.onmessage = self.onMessage.bind(self);
