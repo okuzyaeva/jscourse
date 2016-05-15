@@ -7,6 +7,7 @@ Topics covered:
 - function's prototype
 - how to simulate private static data
 - usage of `translateX` property for alignment
+- why it's important to specify viewport in `<meta></meta>`
 
 
 Homework:
