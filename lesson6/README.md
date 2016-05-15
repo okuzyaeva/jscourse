@@ -14,5 +14,5 @@ Homework:
 Different devices have different events that are optimal to use in button handlers.
 For instance optimum in desktop browsers would be usage of `'click'` event. Whereas on iPhone
 it is more efficient to use `'touchstart'` or `'touchend'` events or their combination.
-So the homework is to create a parsing function that determines which touch event should used in .addEventListener().
+So the homework is to create a parsing function that determines which touch event should used in `.addEventListener()`.
 Then rewrite all existing code so it can rely on proper events.
