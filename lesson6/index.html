@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=devide-with, initial-scale=1, maximum-scale=1">
     <title></title>
     <link rel="stylesheet" href="look.css">
     <link rel="stylesheet" href="eventsPage/eventsPage.css">
@@ -16,6 +17,8 @@
     <script type="text/javascript" src="eventsPage/eventsPage.js"></script>
     <script type="text/javascript" src="presentationsPage/presentationsPage.js"></script>
     <script type="text/javascript" src="chatPage/chatPage.js"></script>
+
+    <script type="text/javascript" src="CustomObject.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
 </head>
@@ -54,7 +57,92 @@
     </div>
     <div id="presentations" class="page">page2</div>
     <div id="chat" class="page">
-        <div class="messages"></div>
+        <div class="messages">
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <div class="message">
+                    <div class="time">11:09</div>
+                    <div class="from">John Carmack</div>
+                    <div class="text">Hello there adskjfhkjahdskjfhas</div>
+                </div>
+            </div>
+            <div class="message-wrapper my">
+                <div class="message">
+                    <div class="time">11:12</div>
+                    <div class="from">Nikita Agafonov</div>
+                    <div class="text">Hello! akjsdhfkjhakjshdf</div>
+                </div>
+            </div>
+        </div>
         <div class="chat-area">
             <textarea id="chat-text" rows="1" placeholder="Type a message"></textarea><div class="send-chat-btn">Send</div>
         </div>
@@ -72,16 +160,16 @@
 
 <script id="chat-message-template" type="text/x-handlebars-template">
     {{#if my}}
-    <div class="chat-message-wrapper my">
+    <div class="message-wrapper my">
     {{else}}
-    <div class="chat-message-wrapper">
+    <div class="message-wrapper">
     {{/if}}
-        <div id="{{id}}" class="chat-message">
-            <div class="message-time">{{time}}</div>
+        <div id="{{id}}" class="message">
+            <div class="time">{{time}}</div>
             {{#unless my}}
-            <div class="message-from">{{from}}</div>
+            <div class="from">{{from}}</div>
             {{/unless}}
-            <div class="message-text">{{text}}</div>
+            <div class="text">{{text}}</div>
         </div>
     </div>
 </script>

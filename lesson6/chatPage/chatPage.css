@@ -1,0 +1,77 @@
+#chat.page .messages {
+    position: absolute;
+    top: 0;
+    bottom: 31px;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#chat.page .chat-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#chat.page .message {
+    position: relative;
+    background: gainsboro;
+    font-size: 14px;
+    padding: 5px;
+    display: inline-block;
+    margin: 10px 60px 10px 10px;
+    word-break: break-all;
+    text-align: left;
+}
+
+#chat.page .message .time {
+    position: absolute;
+    color: gainsboro;
+    right: 0;
+    transform: translateX(calc(100% + 3px));
+}
+
+#chat.page .message-wrapper.my {
+    text-align: right;
+}
+
+#chat.page .message-wrapper.my .time{
+    right: initial;
+    left: 0;
+    transform: translateX(calc(-100% - 3px));
+}
+
+#chat.page .message-wrapper.my .message {
+    background: dodgerblue;
+    color: white;
+    margin: 10px 10px 10px 60px;
+}
+
+#chat.page .message .from {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+#chat.page .message-wrapper.my .from {
+    display: none;
+}
+
+#chat.page .chat-area {
+    background: silver;
+}
+
+#chat.page textarea {
+    width: calc(100% - 65px);
+    font-family: arial;
+    resize: none;
+    vertical-align: middle;
+    border: 1px solid gainsboro;
+    margin: 5px 0 5px 5px;
+}
+
+#chat.page .send-chat-btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 60px;
+}
