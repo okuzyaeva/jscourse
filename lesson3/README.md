@@ -1,4 +1,4 @@
-Lesson:
+Lesson3:
 -------
 This session shows how to create a realisation of a real page and a skeleton for future menu.
 We've created page for browsing events that has fast search functionality in it.

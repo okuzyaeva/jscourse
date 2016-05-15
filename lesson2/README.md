@@ -1,4 +1,4 @@
-What is this:
+Lesson2:
 -------------
 In this lesson we've created a structure for our app.
 It holds few page modules and a simple markup for them.
