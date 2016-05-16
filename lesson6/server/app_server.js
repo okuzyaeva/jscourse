@@ -1,9 +1,8 @@
 var fs = require('fs');
-var http = require('http');
-
 var WebSocketServer = require('ws').Server;
+
 var port = 8083;
-var ws_server = new WebSocketServer({ port: port });
+var ws_server = undefined;
 var db = null;
 var clients = [];
 
@@ -230,6 +229,7 @@ function handleClosure () {
 };
 
 function initWsServer () {
+    ws_server = new WebSocketServer({ port: port });
     ws_server.on('connection', function (ws) {
         clients.push({
             socket: ws,
@@ -262,7 +262,7 @@ function broadcastToEvent (ws, msg, dontSendMyself, eventId) {
         // if(clients[i].user.eventId !== eventId) { continue; }
         send(clients[i].socket, msg);
     }
-}
+};
 
 function init () {
     if(!tryReadDb()) {
@@ -275,4 +275,3 @@ function init () {
 if(init()) {
     console.log('listening at:', port);
 }
-
