@@ -20,7 +20,11 @@ var loginPage = {
         }
     },
 
-    _onLoginClick: function () {
+    _onLoginClick: function (e) {
+        if(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         var login = this.loginField.value;
         var password = this.passwordField.value;
         //perform some validation if needed
@@ -49,12 +53,16 @@ var loginPage = {
         this.passwordField.classList.remove('failed');
     },
 
+    _onLoginFormKeypress: function (e) {
+        if(e.which === 13) {
+            this._onLoginClick();
+        }
+    },
+
     bindUIActions: function () {
-        this.dom.querySelector('.login-btn').addEventListener(defineTouchEvent(), this._onLoginClick.bind(this));
+        this.dom.querySelector('.login-btn').addEventListener(system.touchEvent, this._onLoginClick.bind(this));
         this.loginField.addEventListener('input', this._onFieldInput.bind(this));
         this.passwordField.addEventListener('input', this._onFieldInput.bind(this));
-        this.dom.querySelector('.testing').addEventListener(defineTouchEvent(), function () {
-            sendAjax();
-        });
+        this.dom.addEventListener('keypress', this._onLoginFormKeypress.bind(this));
     }
 };

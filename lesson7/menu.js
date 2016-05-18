@@ -12,6 +12,9 @@ var menu = {
 
     _onMenuItemClick: function (e) {
         var path = e.currentTarget.dataset.path;
+        if(path === 'presentation') {
+            path += '/' + user.getCurrentEventId();
+        }
         router.navigate(path);
         this.closeMenu();
     },
@@ -34,9 +37,9 @@ var menu = {
          *        we're binding it to the menu explicitly. Method .bind() will return us a function
          *        which upon invocation will also call _onMenuClick() with "this" set to "menu".
          */
-        menuBtn.addEventListener('click', this._onMenuClick.bind(this));
+        menuBtn.addEventListener(system.touchEvent, this._onMenuClick.bind(this));
         for(var i = menuItems.length; --i >= 0;) {
-            menuItems[i].addEventListener('click', this._onMenuItemClick.bind(this));
+            menuItems[i].addEventListener(system.touchEvent, this._onMenuItemClick.bind(this));
         }
     }
 };

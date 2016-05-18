@@ -3,24 +3,28 @@ var chatPage = {
     template: null,
     chatContainer: null,
     messageContainer: null,
-    //demo only
-    from: 'user1',
 
     init: function () {
         this.dom = document.querySelector('#chat.page');
         this.chatContainer = this.dom.querySelector('.messages');
         this.messageContainer = this.dom.querySelector('#chat-text');
         this.template = Handlebars.compile(document.querySelector('#chat-message-template').innerHTML);
+        this.bindUIActions();
+    },
+
+    onPageLoad: function () {
+        utils.setHeader('Chat');
+        connection.requestChat(user.getCurrentEventId());
     },
 
     _onSendClick: function (e) {
-        var text = this.dom.querySelector('#chat-text').value;
+        var text = this.messageContainer.value;
         if(!text) { return; }
         connection.sendChatMessage({
-            event: 0,//user.getCurrentEventId(),
-            time: new Date().getTime(),
-            from: this.from,//user.getMyOpenData().login,
-            text: text
+            event: user.getCurrentEventId(),
+            time:  new Date().getTime(),
+            from:  user.getMyOpenData().login,
+            text:  text
         });
     },
 
@@ -32,14 +36,23 @@ var chatPage = {
 
     onIncomingMessage: function (message) {
         var time = new Date(parseInt(message.time));
+        var scrollTopMax = this.chatContainer.scrollHeight - this.chatContainer.getBoundingClientRect().height;
+        var syncWithMessage = false;
         var msg = {
-            my:   message.from === this.from,// user.getMyOpenData().login,
+            my:   message.from === user.getMyOpenData().login,
             time: this._constructTimeString(time),
-            from: message.from,//user.getOpenDataForUser(message.from).name,
+            from: user.getOpenDataForUser(message.from).name,
             text: message.text,
         };
+        if(this.chatContainer.scrollTop === scrollTopMax) {
+            syncWithMessage = true;
+        }
+        // after adding new message scrollHeight changes
         this.chatContainer.insertAdjacentHTML('beforeEnd', this.template(msg));
-        this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
+        if(syncWithMessage) {
+            // setting to any number larget than maximum scrollTop value will automatically set it to real maximum
+            this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
+        }
         this.messageContainer.value = '';
     },
 
@@ -60,12 +73,7 @@ var chatPage = {
         var messagesDOM = this.dom.querySelector('.messages');
         messagesDOM.innerHTML = '';
         messagesDOM.insertAdjacentHTML('afterbegin', html);
-    },
-
-    onPageLoad: function () {
-        // setHeader('Chat');
-        // connection.getChat(user.getCurrentEventId());
-        this.bindUIActions();
+        this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
     },
 
     _onOpenDataUpdate: function () {
@@ -77,6 +85,6 @@ var chatPage = {
     },
 
     bindUIActions: function (){
-        this.dom.querySelector('.send-chat-btn').addEventListener('click', this._onSendClick.bind(this));
+        this.dom.querySelector('.send-chat-btn').addEventListener(system.touchEvent, this._onSendClick.bind(this));
     }
 };

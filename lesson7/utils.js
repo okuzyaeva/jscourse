@@ -14,5 +14,9 @@ var utils = {
 
     setCookie: function (name, val) {
         document.cookie = name + '=' + val;
+    },
+
+    setHeader: function (name) {
+        document.querySelector('.header .header-caption').textContent = name;
     }
 };

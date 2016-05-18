@@ -1,4 +1,30 @@
 var connection = {
+
+    serverReqs: {
+        events:             0,
+        loginResult:        1,
+        reroute:            2,
+        lookupResult:       3,
+        chat:               4,
+        handledChatMessage: 5,
+        presentationData:   6,
+        openDataUpdate:     7,
+        slide:              8
+    },
+
+    clientReqs: {
+        events:         0,
+        chat:           1,
+        presentation:   2,
+        credentials:    3,
+        lookup:         4,
+        chatmessage:    5,
+        markMyEvent:    6,
+        openDataUpdate: 7,
+        logout:         8,
+        slide:          9
+    },
+
     _listeners: {
         'openDataUpdate': []
     },
@@ -6,7 +32,7 @@ var connection = {
     ws: null,
 
     init: function (cb) {
-        this.ws = new WebSocket('ws://192.168.254.77:8083');
+        this.ws = new WebSocket('ws://' + location.host + ':8083');
         this.ws.onopen = function () {
             connection.ws.onmessage = function (msg) {
                 connection.handleIncomingMsg(msg);
@@ -43,30 +69,30 @@ var connection = {
         this.ws.send(JSON.stringify(data));
     },
 
-    getEvents: function () {
+    requestEvents: function () {
         this._send({
-            req: 'events'
+            req: this.clientReqs.events
         });
     },
 
-    getChat: function (eventId) {
+    requestChat: function (eventId) {
         if(eventId === undefined) { return; }
         this._send({
-            req: 'chat',
+            req: this.clientReqs.chat,
             event: eventId
         })
     },
 
     requestPresentation: function (id) {
         this._send({
-            req: 'presentation',
+            req: this.clientReqs.presentation,
             id:  id
         });
     },
 
     sendCredentials: function (login, password) {
         this._send({
-            req: 'credentials',
+            req: this.clientReqs.credentials,
             login: login.toLowerCase(),
             password: password
         });
@@ -74,44 +100,44 @@ var connection = {
 
     sendLookUp: function (login) {
         this._send({
-            req: 'lookup',
+            req: this.clientReqs.lookup,
             login: login
         })
     },
 
     sendChatMessage: function (msg) {
         this._send({
-            req: 'chatmessage',
+            req: this.clientReqs.chatmessage,
             message: msg
         });
     },
 
-    preserveOpenedEventId: function (id) {
+    markMyEvent: function (id) {
         this._send({
-            req: 'preserveEventId',
+            req: this.clientReqs.markMyEvent,
             eventId: id
         });
     },
 
     updateOpenData: function (myOpenData) {
         this._send({
-            req: 'openDataUpdate',
+            req: this.clientReqs.openDataUpdate,
             openData: myOpenData
         });
     },
 
     sendLogout: function (login) {
         this._send({
-            req: 'logout',
+            req: this.clientReqs.logout,
             login: login
         });
     },
 
     sendCurrentSlide: function (slideNumber, eventId) {
         this._send({
-            req: 'slide',
+            req: this.clientReqs.slide,
             eventId: eventId,
-            slideNumber: slideNumber 
+            slideNumber: slideNumber
         });
     },
 
@@ -126,32 +152,32 @@ var connection = {
             return;
         }
         switch(data.about) {
-            case 'events':
+            case this.serverReqs.events:
                 eventsPage.onIncomingEvents(data.itself);
             break;
-            case 'loginResult':
+            case this.serverReqs.loginResult:
                 loginPage.onLoginResultRecv(data.itself);
             break;
-            case 'reroute':
+            case this.serverReqs.reroute:
                 location.hash = '#/' + data.itself;
             break;
-            case 'lookupResult':
+            case this.serverReqs.lookupResult:
                 onLookUpResult(data.itself);
             break;
-            case 'chat':
+            case this.serverReqs.chat:
                 chatPage.onChatReceived(data.itself);
             break;
-            case 'handledChatMessage':
+            case this.serverReqs.handledChatMessage:
                 chatPage.onIncomingMessage(data.itself);
             break;
-            case 'presentationData':
+            case this.serverReqs.presentationData:
                 presentationPage.onPresentationDataReceived(data.itself);
             break;
-            case 'openDataUpdate':
+            case this.serverReqs.openDataUpdate:
                 user.setOpenDataForUser(data.itself);
                 this._trigger('openDataUpdate');
             break;
-            case 'slide':
+            case this.serverReqs.slide:
                 presentationPage.handleRemoteSlide(data.itself);
             break;
         }

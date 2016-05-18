@@ -1,4 +1,5 @@
 function initAll () {
+    system.init();
     loginPage.init();
     eventsPage.init();
     chatPage.init();
@@ -16,18 +17,19 @@ function onLookUpResult (result) {
     if(result.success) {
         user.applyVitalData(result);
     }
-    router.init();
+    router.initRouter();
 };
 
 window.onload = function () {
     console.log('hello');
     connection.init(function () {
         initAll();
+        console.log('all inited')
         var login = utils.getCookie('login');
         if(login) {
             connection.sendLookUp(login);
         } else {
-            router.init();
+            router.initRouter();
         }
     });
 };

@@ -1,7 +1,7 @@
 #chat.page .messages {
     position: absolute;
     top: 0;
-    bottom: 31px;
+    bottom: 43px;
     width: 100%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -11,13 +11,15 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    background: whitesmoke;
+    border-top: 1px solid gainsboro;
 }
 
 #chat.page .message {
     position: relative;
     background: gainsboro;
     font-size: 14px;
-    padding: 5px;
+    padding: 10px;
     display: inline-block;
     margin: 10px 60px 10px 10px;
     word-break: break-all;
@@ -56,17 +58,17 @@
     display: none;
 }
 
-#chat.page .chat-area {
-    background: silver;
-}
-
 #chat.page textarea {
-    width: calc(100% - 65px);
+    font-size: 14px;
+    border-radius: 0;
+    width: calc(100% - 67px);
     font-family: arial;
     resize: none;
     vertical-align: middle;
     border: 1px solid gainsboro;
-    margin: 5px 0 5px 5px;
+    padding: 5px;
+    margin: 7px 0 7px 7px;
+    -webkit-appearance: none;
 }
 
 #chat.page .send-chat-btn {

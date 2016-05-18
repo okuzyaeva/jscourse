@@ -1,7 +1,8 @@
 var eventsPage = {
     template: null,
-    eventsDOM: null,
+    pageDOM: null,
     eventsList: null,
+    eventsData: null,
 
     init: function () {
         /*
@@ -15,16 +16,19 @@ var eventsPage = {
          *        See more details on library page: http://handlebarsjs.com
          */
         this.template = Handlebars.compile(document.querySelector('#event-template').innerHTML);
-        this.eventsDOM = document.querySelector('#events.page');
-        this.eventsList = this.eventsDOM.querySelectorAll('.event');
+        this.pageDOM = document.querySelector('#events.page');
+        this.eventsList = this.pageDOM.querySelectorAll('.event');
         this.bindUIActions();
     },
 
     onPageLoad: function () {
         console.log('events');
+        connection.requestEvents(); // only asks server for data nothing more
+        utils.setHeader('Events');
     },
 
     _onSearch: function (e) {
+        if(this.eventsList === null) { return; }
         var regex = RegExp(e.currentTarget.value, 'i');
         /*
          * @desc: Note how search below works.
@@ -42,8 +46,52 @@ var eventsPage = {
         }
     },
 
+    onIncomingEvents: function (events) {
+        // now when server has sent us data because we've requested it onPageLoad, let's display it
+        this.eventsData = events; // save events data so we always can rebuild HTML if needed
+        this.buildEvents();
+    },
+
+    _onEventClick: function (e) {
+        eventsPage.openEvent(e.currentTarget.id);
+    },
+
+    openEvent: function (id) {
+        connection.markMyEvent(id); // say to server that we entered an event
+        router.navigate('presentation/' + id);
+    },
+
+    removeEvents: function () {
+        this._unbindEventsActions();
+        this.pageDOM.querySelector('.events-list').innerHTML = '';
+        this.eventsList = null;
+    },
+
+    buildEvents: function () {
+        var html = '';
+        for(var i = 0; i < this.eventsData.length; i++) {
+            html += this.template(this.eventsData[i]);
+        }
+        this.removeEvents();
+        this.pageDOM.querySelector('.events-list').insertAdjacentHTML('afterbegin', html);
+        this.eventsList = this.pageDOM.querySelectorAll('.event');
+        this._bindEventsActions();
+    },
+
+    _bindEventsActions: function () {
+        for(var i = this.eventsList.length; --i >= 0;) {
+            this.eventsList[i].addEventListener(system.touchEvent, this._onEventClick);
+        }
+    },
+
+    _unbindEventsActions: function () {
+        if(!this.eventsList) { return; }
+        for(var i = this.eventsList.length; --i >= 0;) {
+            this.eventsList[i].removeEventListener(system.touchEvent, this._onEventClick);
+        }
+    },
+
     bindUIActions: function () {
-        var inputSearch = this.eventsDOM.querySelector('input');
-        inputSearch.addEventListener('input', this._onSearch.bind(this));
+        this.pageDOM.querySelector('input').addEventListener('input', this._onSearch.bind(this));
     }
 };

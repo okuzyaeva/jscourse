@@ -6,6 +6,34 @@ var ws_server = undefined;
 var db = null;
 var clients = [];
 
+// improvements:
+// how to create multisocket user connection?
+
+var serverReqs = {
+    events:             0,
+    loginResult:        1,
+    reroute:            2,
+    lookupResult:       3,
+    chat:               4,
+    handledChatMessage: 5,
+    presentationData:   6,
+    openDataUpdate:     7,
+    slide:              8
+};
+
+var clientReqs = {
+    events:         0,
+    chat:           1,
+    presentation:   2,
+    credentials:    3,
+    lookup:         4,
+    chatmessage:    5,
+    markMyEvent:    6,
+    openDataUpdate: 7,
+    logout:         8,
+    slide:          9
+};
+
 function tryReadDb () {
     try {
         db = fs.readFileSync('db.json', 'utf8');
@@ -29,9 +57,9 @@ function updateDb () {
 };
 
 function checkIfLoggedIn (ws) {
+    var user = null;
     for(var i = clients.length; --i >= 0;) {
         if(clients[i].socket === ws) {
-            var user = null;
             if(clients[i].user) {
                 user = db.users[clients[i].user.openData.login];
             } else {
@@ -98,41 +126,43 @@ function handleIncomingMessage (msg) {
     // }
 
     switch(msg_obj.req) {
-        case 'events':
+        case clientReqs.events:
             send(this, {
-                about: 'events',
+                about: serverReqs.events,
                 itself: db.events
             });
         break;
-        case 'preserveEventId':
+        case clientReqs.markMyEvent:
             var user = getUserFromConnection(this);
-            user.eventId = msg_obj.eventId;
-            updateDb();
+            if(user !== undefined) {
+                user.eventId = msg_obj.eventId;
+                updateDb();
+            }
         break;
-        case 'lookup':
+        case clientReqs.lookup:
             var user = db.users[msg_obj.login];
             if(user && user.loggedIn) {
                 updateClients(this, user);
                 send(this, {
-                    about: 'lookupResult',
+                    about: serverReqs.lookupResult,
                     itself: getInitialDataSetForUser(user)
                 });
             } else {
                 send(this, {
-                    about: 'lookupResult',
+                    about: serverReqs.lookupResult,
                     itself: {
                         success: false
                     }
                 })
             }
         break;
-        case 'chat':
+        case clientReqs.chat:
             send(this, {
-                about: 'chat',
+                about: serverReqs.chat,
                 itself: db.chat[msg_obj.event]
             });
         break;
-        case 'chatmessage':
+        case clientReqs.chatmessage:
             var chatmsg = msg_obj.message;
             var chat = db.chat[chatmsg.event];
             var lastid = chat[chat.length - 1] ? chat[chat.length - 1].id : 0;
@@ -145,25 +175,25 @@ function handleIncomingMessage (msg) {
             chat.push(finalMessage);
             updateDb();
             broadcastToEvent(this, {
-                about: 'handledChatMessage',
+                about: serverReqs.handledChatMessage,
                 itself: finalMessage
             }, false, chatmsg.event);
         break;
-        case 'presentation':
+        case clientReqs.presentation:
             var slideNames = db.presentations[msg_obj.id];
             send(this, {
-                about: 'presentationData',
+                about: serverReqs.presentationData,
                 itself: slideNames
             });
         break;
-        case 'openDataUpdate':
+        case clientReqs.openDataUpdate:
             db.users[msg_obj.openData.login].openData = msg_obj.openData;
             broadcast(this, {
-                about: 'openDataUpdate',
+                about: serverReqs.openDataUpdate,
                 itself: msg_obj.openData
             });
         break;
-        case 'credentials':
+        case clientReqs.credentials:
             var user = db.users[msg_obj.login];
             if(user) {
                 if(user.password === msg_obj.password) {
@@ -173,12 +203,12 @@ function handleIncomingMessage (msg) {
                     }
                     updateClients(this, user);
                     send(this, {
-                        about: 'loginResult',
+                        about: serverReqs.loginResult,
                         itself: getInitialDataSetForUser(user)
                     });
                 } else {
                     send(this, {
-                        about: 'loginResult',
+                        about: serverReqs.loginResult,
                         itself: {
                             success: false
                         }
@@ -186,25 +216,25 @@ function handleIncomingMessage (msg) {
                 }
             } else {
                 send(this, {
-                    about: 'loginResult',
+                    about: serverReqs.loginResult,
                     itself: {
                         success: false
                     }
                 });
             }
         break;
-        case 'logout':
+        case clientReqs.logout:
             var user = db.users[msg_obj.login];
             if(user) {
                 user.loggedIn = false;
                 updateDb();
             }
         break;
-        case 'slide':
+        case clientReqs.slide:
             var presentation = db.presentations[msg_obj.eventId];
             presentation.currentSlide = msg_obj.slideNumber;
             broadcastToEvent(this, {
-                about: 'slide',
+                about: serverReqs.slide,
                 itself: {
                     eventId: msg_obj.eventId,
                     slideNumber: msg_obj.slideNumber
