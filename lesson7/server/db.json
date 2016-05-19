@@ -1,0 +1,151 @@
+{
+  "system": {
+    "presentationsLocation": "server/presentations"
+  },
+  "presentations": {
+    "0": {
+      "currentSlide": 0,
+      "slides": [
+        "s1.png",
+        "s2.png",
+        "s3.png"
+      ]
+    },
+    "1": {
+      "currentSlide": 1,
+      "slides": [
+        "s1.png",
+        "s2.png",
+        "s3.png"
+      ]
+    }
+  },
+  "users": {
+    "user1": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": "0",
+      "openData": {
+        "login": "user1",
+        "name": "Nikita Agafonov",
+        "company": "Gigawatz"
+      }
+    },
+    "user2": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": "0",
+      "openData": {
+        "login": "user2",
+        "name": "Elon Musk",
+        "company": "SpaceX, Tesla, SolarCity"
+      }
+    },
+    "user3": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": "0",
+      "openData": {
+        "login": "user3",
+        "name": "Sean Murray",
+        "company": "Hello Games"
+      }
+    },
+    "user4": {
+      "password": "1234",
+      "loggedIn": true,
+      "eventId": null,
+      "openData": {
+        "login": "user4",
+        "name": "PlayStation4 Germany",
+        "company": "Sony"
+      }
+    }
+  },
+  "chat": {
+    "0": [
+      {
+        "id": 0,
+        "time": 1463583275679,
+        "from": "user1",
+        "text": "Chjhf"
+      }
+    ],
+    "1": [
+      {
+        "id": 0,
+        "time": 1462116515425,
+        "from": "user1",
+        "text": "dfgsdfg"
+      },
+      {
+        "id": 0,
+        "time": 1462116565835,
+        "from": "user2",
+        "text": "Hello"
+      },
+      {
+        "id": 0,
+        "time": 1462116582693,
+        "from": "user2",
+        "text": "Meet me in model 3 evt"
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": 0,
+      "name": "Tesla model 3 unveil",
+      "time": "8:30pm",
+      "room": "Tesla facility, area 3"
+    },
+    {
+      "id": 1,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 2,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 3,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 4,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 5,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 6,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 7,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    },
+    {
+      "id": 8,
+      "name": "Tesla model X reveal",
+      "time": "8:00pm",
+      "room": "Tesla facility, main arena"
+    }
+  ]
+}

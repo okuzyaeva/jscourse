@@ -1,0 +1,132 @@
+body {
+    font-family: arial;
+    margin: 0;
+}
+
+input {
+    font-size: 14px;
+}
+
+body * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input.common {
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid gainsboro;
+    padding: 9px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader:after {
+    content: '';
+    display: block;
+    width: 65px;
+    height: 65px;
+    border: 5px solid transparent;
+    border-left-color: dodgerblue;
+    border-right-color: dodgerblue;
+    border-radius: 100%;
+    animation: spinning .5s linear infinite;
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.btn {
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    -webkit-user-select: none;
+}
+
+.btn:active {
+    background: rgba(0, 0, 0, .1);
+}
+
+.hidden {
+    display: none;
+}
+
+.header {
+    background: dodgerblue;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.menu-btn {
+    position: absolute;
+    right: 0;
+    width: 50px;
+}
+
+.main {
+    transition: transform .3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.main.opened {
+    transform: translate3d(calc(-100% + 50px), 0, 0);
+}
+
+.main .page {
+    background: white;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.main.no-content-margin .page {
+    top: 0;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: dimgray;
+    color: white;
+    text-align: right;
+    margin-left: 50px;
+}
+
+.menu-item {
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    -webkit-user-select: none;
+}
+
+.menu-item:active {
+    background: rgba(0,0,0,.3);
+}
