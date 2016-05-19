@@ -4,4 +4,5 @@
     background: dodgerblue;
     position: absolute;
     border: 1px solid black;
+    -webkit-user-select: none;
 }
