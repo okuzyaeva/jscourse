@@ -8,6 +8,7 @@ We've also covered some techniques and features that were used for final app pre
 Topics covered:
 - how to use combination of mouseup, mousedown and mousemove events to create drag and drop
 - what is requestAnimationFrame and how to create inertia like behavior with it
+- how to write your own controllable logging function based on default `console.log()`
 - various techniques used in lesson7
 
 
