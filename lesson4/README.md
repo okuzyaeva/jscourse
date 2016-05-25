@@ -1,8 +1,10 @@
 Lesson4:
--------
+--------
 In this lesson we examined how one can create a very simple HTTP server
 that works in parallel to main one and accepts requests from any origin.
+
 Topics covered:
+
 - XMLHttpRequest (or AJAX)
 - HTTP server basics
 - What Access-Controll-Allow-Origin header does
