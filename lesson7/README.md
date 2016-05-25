@@ -4,13 +4,7 @@ Mostly functional application. More work to come.
 
 Topics covered:
 - prototypal inheritance
-- custom CSS animations using `@keyframes`
-- how to create CSS loader with spinning animation
-- what are `preventDefault()` and `stopPropagation()` event's methods
-- how event bubbling works
-- what is `getBoundingClientRect()`
-- how to create custom listeners
-- how to create custom logging function based on `console.log()`
+- review of the application
 
 Homework:
 ---------
