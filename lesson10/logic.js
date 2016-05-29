@@ -15,6 +15,27 @@ n = new Number(5); // contains primitive 5 and functions like .toFixed()
 n = Number(''); // n = 0;
 // you can read in depth about Primitives here https://developer.mozilla.org/ru/docs/Glossary/Primitive
 
+// null vs undefined
+obj = null; // is variable who's value is set to a null (object)
+idontknow = undefined; // is a variable who's value is not defined
+
+// typeof, instanceof
+typeof obj;       // object
+typeof idontknow; // undefined
+n = new Number();
+n instanceof Number; // true
+// in other words typeof is for evaluating type of variable
+// instanceof for ensuring if variable has specific dataType in it's prototype chain
+
+typeof NaN; // returns 'number' :)
+n / 0; // returns Infinity
+
+// Arithmetics of strings
+'asdf' + 10; // '1010'
+'asdf' - 10; // NaN
+'10' - 10;   // 0
+'80' < 9;    // false
+
 // arrays
 var arr = [];        // array is defined like this
 arr = new Array();   // or like this
