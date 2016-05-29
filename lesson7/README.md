@@ -2,8 +2,9 @@ Lesson7:
 --------
 Mostly functional application. More work to come.
 
-Topics covered in the lesson:
+Topics covered:
 - prototypal inheritance
+- review of the application
 
 Homework:
 ---------
