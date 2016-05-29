@@ -7,7 +7,7 @@ function, then `bindUIActions()`, then `slide()`, then `generateSlides()`.
 
 Topics covered:
 
-- what `window.onload' does
+- what `window.onload` does
 - how to write functions
 - what is `document.querySelector` and how to use it
 - how to generate `html` and insert it to the page
