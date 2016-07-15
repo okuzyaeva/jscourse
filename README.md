@@ -30,4 +30,4 @@ Elements manipulation. How to create drag and drop functionality with ability to
 Animation. Basics of time-based animation. Intro to games.
 
 #### lesson10:
-Repetition. In-depth review of all JavaScript and front end abilites covered so far.
+Repetition. In-depth review of all JavaScript and front end abilites covered so far.OLYA
